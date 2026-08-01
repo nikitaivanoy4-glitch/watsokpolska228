@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIKIFILINI PL | Ekskluzywna Odzież Designerska & Streetwear</title>
+  <meta name="description" content="Oficjalny polski sklep z limitowaną odzieżą designerską, oversize hoodie, heavyweight t-shirtami i spodniami tactical w stylu cyberpunk & dark gothic. Uszyte w Polsce.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    ⚡ DARMOWA DOSTAWA OD 300 ZŁ NA TERENIE POLSKI 🇵🇱 | NOWY DROP "CYBER SHADOW '26" JUŻ DOSTĘPNY ⚡
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        NIKIFILINI <span class="logo-tag">PL</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#catalog" class="nav-link active" onclick="filterCategory('all', this)">Nowości</a></li>
+          <li><a href="#catalog" class="nav-link" onclick="filterCategory('bluzy', this)">Bluzy</a></li>
+          <li><a href="#catalog" class="nav-link" onclick="filterCategory('t-shirty', this)">T-Shirty</a></li>
+          <li><a href="#catalog" class="nav-link" onclick="filterCategory('spodnie', this)">Spodnie</a></li>
+          <li><a href="#catalog" class="nav-link" onclick="filterCategory('kurtki', this)">Kurtki</a></li>
+          <li><a href="#lookbook" class="nav-link">Lookbook</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Wishlist Icon -->
+        <button class="icon-btn" onclick="showToast('Lista Życzeń otwarta')" title="Lista Życzeń">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge" id="wishlist-badge">0</span>
+        </button>
+
+        <!-- Cart Icon -->
+        <button class="icon-btn" onclick="openCartDrawer()" title="Koszyk">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="badge" id="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <img src="assets/images/hero.png" alt="NIKIFILINI Cyberpunk Streetwear" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">🔥 LIMITOWANA KOLEKCJA 2026</div>
+      <h1 class="hero-title">CYBER SHADOW '26</h1>
+      <p class="hero-subtitle">
+        Ciężka gramatura, autorskie grafiki dark anime i najwyższa jakość wykonania w Polsce.
+      </p>
+
+      <!-- Drop Countdown -->
+      <div class="countdown-box">
+        <div class="countdown-item">
+          <div class="countdown-number" id="cd-days">03</div>
+          <div class="countdown-label">Dni</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="cd-hours">14</div>
+          <div class="countdown-label">Godzin</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="cd-mins">22</div>
+          <div class="countdown-label">Minut</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="cd-secs">45</div>
+          <div class="countdown-label">Sekund</div>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#catalog" class="btn btn-primary">ZOBACZ KOLEKCJĘ</a>
+        <a href="#lookbook" class="btn btn-secondary">EXPLORE LOOKBOOK</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee Ticker -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <div class="ticker-item"><span>•</span> DARMOWA DOSTAWA W POLSCE</div>
+      <div class="ticker-item"><span>•</span> HEAVYWEIGHT 480 GSM</div>
+      <div class="ticker-item"><span>•</span> SZYBKA WYSYŁKA INPOST PACZKOMAT</div>
+      <div class="ticker-item"><span>•</span> AUTORSKIE HAFITY I SITODRUK</div>
+      <div class="ticker-item"><span>•</span> DARMOWA DOSTAWA W POLSCE</div>
+      <div class="ticker-item"><span>•</span> HEAVYWEIGHT 480 GSM</div>
+      <div class="ticker-item"><span>•</span> SZYBKA WYSYŁKA INPOST PACZKOMAT</div>
+      <div class="ticker-item"><span>•</span> AUTORSKIE HAFITY I SITODRUK</div>
+    </div>
+  </div>
+
+  <!-- Catalog Section -->
+  <section class="catalog-section" id="catalog">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">KATALOG PRODUKTÓW</h2>
+        <p class="section-subtitle">Wybierz unikalny streetwear uszyty w limitowanych nakładach</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" onclick="filterCategory('all', this)">Wszystko</button>
+        <button class="filter-tab" onclick="filterCategory('bluzy', this)">Bluzy</button>
+        <button class="filter-tab" onclick="filterCategory('t-shirty', this)">T-Shirty</button>
+        <button class="filter-tab" onclick="filterCategory('spodnie', this)">Spodnie</button>
+        <button class="filter-tab" onclick="filterCategory('kurtki', this)">Kurtki</button>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid" id="product-grid">
+      <!-- Injected via app.js -->
+    </div>
+  </section>
+
+  <!-- Lookbook Showcase -->
+  <section class="lookbook-section" id="lookbook">
+    <div class="lookbook-container">
+      <h2 class="section-title" style="text-align: center;">LOOKBOOK & ESTETYKA</h2>
+      <p class="section-subtitle" style="text-align: center;">Kultura cyberpunk, dark gothic i polski streetwear</p>
+
+      <div class="lookbook-grid">
+        <div class="lookbook-card col-8">
+          <img src="assets/images/hero.png" alt="Lookbook 1" class="lookbook-img">
+          <div class="lookbook-content">
+            <h3 class="lookbook-title">CYBERPUNK CITY ESCAPE</h3>
+            <p class="lookbook-desc">Nowa definicja miejskiego stylu oversize. Grube bawełniane sploty stworzone do codziennego noszenia.</p>
+            <button class="btn btn-secondary" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">ZOBACZ STYLE</button>
+          </div>
+        </div>
+
+        <div class="lookbook-card col-4">
+          <img src="assets/images/hoodie_front.png" alt="Lookbook 2" class="lookbook-img">
+          <div class="lookbook-content">
+            <h3 class="lookbook-title">HEAVY COTTON 480GSM</h3>
+            <p class="lookbook-desc">Maksymalny komfort i trwałość nadruków.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide-Over Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cart-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3 class="cart-title">TWÓJ KOSZYK</h3>
+      <button class="close-btn" onclick="closeCartDrawer()">&times;</button>
+    </div>
+
+    <div class="shipping-progress">
+      <div id="shipping-text">Brakuje Ci 111 zł do darmowej dostawy!</div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="shipping-fill"></div>
+      </div>
+    </div>
+
+    <div class="cart-body" id="cart-body">
+      <!-- Injected via app.js -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Suma częściowa:</span>
+        <span id="cart-subtotal">0 zł</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Dostawa (InPost Paczkomat / Kurier):</span>
+        <span style="color: var(--accent-cyan); font-weight: bold;">DARMOWA OD 300 ZŁ</span>
+      </div>
+      <div class="cart-total-row">
+        <span>ŁĄCZNIE:</span>
+        <span id="cart-total">0 zł</span>
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%;" onclick="openCheckout()">
+        PRZEJDŹ DO KASY (DANE ZAMÓWIENIA)
+      </button>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quickview-modal">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeQuickView()">&times;</button>
+      <div id="modal-content" style="display: contents;">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Simulation Modal -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal-container" style="max-width: 600px; grid-template-columns: 1fr;">
+      <button class="modal-close" onclick="closeCheckout()">&times;</button>
+      <div>
+        <h2 style="font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 8px;">DANE DO WYSYŁKI 🇵🇱</h2>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 24px;">Szybka dostawa w całej Polsce przez InPost Paczkomat 24/7 lub Kuriera DPD.</p>
+        
+        <form onsubmit="processOrder(event)" style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <input type="text" placeholder="Imię" required style="padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff; border-radius: 6px;">
+            <input type="text" placeholder="Nazwisko" required style="padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff; border-radius: 6px;">
+          </div>
+          
+          <input type="email" placeholder="Adres e-mail" required style="padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff; border-radius: 6px;">
+          <input type="tel" placeholder="Numer telefonu (do InPost)" required style="padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff; border-radius: 6px;">
+          
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 12px;">
+            <input type="text" placeholder="Adres lub Kod Paczkomatu (np. KRA01M)" required style="padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff; border-radius: 6px;">
+            <input type="text" placeholder="Kod pocztowy" required style="padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff; border-radius: 6px;">
+          </div>
+
+          <label style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-top: 8px;">Metoda Płatności:</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+            <label style="padding: 12px; border: 1px solid var(--accent-cyan); border-radius: 6px; text-align: center; cursor: pointer; background: rgba(0,240,255,0.1); font-weight: bold; font-size: 0.85rem; color: #fff;">
+              <input type="radio" name="payment" checked style="display:none;"> BLIK 🇵🇱
+            </label>
+            <label style="padding: 12px; border: 1px solid var(--border-color); border-radius: 6px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.03); font-size: 0.85rem; color: var(--text-secondary);">
+              <input type="radio" name="payment" style="display:none;"> Karta
+            </label>
+            <label style="padding: 12px; border: 1px solid var(--border-color); border-radius: 6px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.03); font-size: 0.85rem; color: var(--text-secondary);">
+              <input type="radio" name="payment" style="display:none;"> Apple Pay
+            </label>
+          </div>
+
+          <div style="margin-top: 12px; display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 800;">
+            <span>Do zapłaty:</span>
+            <span id="checkout-total-summary" style="color: var(--accent-cyan);">0 zł</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: 12px;">ZŁÓŻ ZAMÓWIENIE I ZAPŁAĆ</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="#" class="logo">NIKIFILINI <span class="logo-tag">PL</span></a>
+        <p>Ekskluzywna marka odzieży streetwear inspirująca się estetyką cyberpunk, dark anime oraz gotyku. Projektowane i szyte w Polsce.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Sklep</h4>
+        <ul class="footer-links">
+          <li><a href="#catalog" onclick="filterCategory('bluzy', this)">Bluzy Oversize</a></li>
+          <li><a href="#catalog" onclick="filterCategory('t-shirty', this)">T-Shirty Heavyweight</a></li>
+          <li><a href="#catalog" onclick="filterCategory('spodnie', this)">Spodnie Tactical</a></li>
+          <li><a href="#catalog" onclick="filterCategory('kurtki', this)">Kurtki Denim</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Obsługa Klienta</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="showToast('Dostawa InPost: 1-2 dni robocze')">Dostawa i Płatności</a></li>
+          <li><a href="#" onclick="showToast('Masz 30 dni na zwrot bez podania przyczyny')">Zwroty i Reklamacje</a></li>
+          <li><a href="#" onclick="showToast('Tabela Rozmiarów: Wszystkie ubrania mają krój Oversize / Boxy')">Tabela Rozmiarów</a></li>
+          <li><a href="#" onclick="showToast('Kontakt: pomoc@nikifilini.pl')">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Dołącz do Klubu</h4>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Zapisz się do newslettera i odbierz -10% na pierwszy drop.</p>
+        <form onsubmit="event.preventDefault(); showToast('Dziękujemy za zapis! Kod RABAT10 został aktywowany 🎉');" style="display: flex; gap: 8px;">
+          <input type="email" placeholder="Twój e-mail" required style="padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 4px; color: #fff; width: 100%; font-size: 0.8rem;">
+          <button type="submit" class="btn btn-primary" style="padding: 10px 16px;">OK</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 NIKIFILINI PL. Wszystkie prawa zastrzeżone. Uszyte w Polsce.</div>
+      <div style="display: flex; gap: 16px;">
+        <span>Płatności: BLIK • InPost • Visa • Mastercard</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
